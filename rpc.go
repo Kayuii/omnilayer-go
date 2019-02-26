@@ -1,6 +1,6 @@
 package omnilayer
 
-import "github.com/ibclabs/omnilayer-go/omnijson"
+import "github.com/blockchain-lib/omnilayer-go/omnijson"
 
 func (c *Client) GetBlockChainInfo() (omnijson.GetBlockChainInfoResult, error) {
 	return futureGetBlockChainInfo(c.do(omnijson.GetBlockChainInfoCommand{})).Receive()
