@@ -3,6 +3,7 @@ package omnijson
 type GetNewAddressResult = string
 
 type GetNewAddressCommand struct {
+	Account string
 }
 
 func (GetNewAddressCommand) Method() string {
@@ -14,5 +15,5 @@ func (GetNewAddressCommand) ID() string {
 }
 
 func (cmd GetNewAddressCommand) Params() []interface{} {
-	return []interface{}{}
+	return []interface{}{cmd.Account}
 }
