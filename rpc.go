@@ -1,6 +1,8 @@
 package omnilayer
 
-import "github.com/blockchain-lib/omnilayer-go/omnijson"
+import (
+	"github.com/blockchain-lib/omnilayer-go/omnijson"
+)
 
 func (c *Client) GetBlockChainInfo() (omnijson.GetBlockChainInfoResult, error) {
 	return futureGetBlockChainInfo(c.do(omnijson.GetBlockChainInfoCommand{})).Receive()
@@ -24,6 +26,10 @@ func (c *Client) OmniGetTransaction(hash string) (omnijson.OmniGettransactionRes
 
 func (c *Client) ListUnspent(cmd omnijson.ListUnspentCommand) (omnijson.ListUnspentResult, error) {
 	return futureListUnspent(c.do(cmd)).Receive()
+}
+
+func (c *Client) GetNewAddress(cmd omnijson.GetNewAddressCommand) (omnijson.GetNewAddressResult, error) {
+	return futureGetNewAddress(c.do(cmd)).Receive()
 }
 
 func (c *Client) OmniCreatePayloadSimpleSend(cmd omnijson.OmniCreatePayloadSimpleSendCommand) (omnijson.OmniCreatePayloadSimpleSendResult, error) {
