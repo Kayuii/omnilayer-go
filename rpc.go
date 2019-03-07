@@ -18,6 +18,10 @@ func (c *Client) GetInfo() (omnijson.OmniGetInfoResult, error) {
 	return futureGetInfo(c.do(omnijson.OmniGetInfoCommand{})).Receive()
 }
 
+func (c *Client) GetBlockCount()(omnijson.GetBlockCountResult, error)  {
+	return futureGetBlockCount(c.do(omnijson.GetBlockCountCmd{})).Receive()
+}
+
 func (c *Client) OmniGetTransaction(hash string) (omnijson.OmniGettransactionResult, error) {
 	return futureOmniGetTransaction(c.do(omnijson.OmniGetTransactionCommand{
 		Hash: hash,

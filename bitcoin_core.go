@@ -96,6 +96,7 @@ func (f futureSignRawTransaction) Receive() (omnijson.SignRawTransactionResult, 
 	return result, err
 }
 
+
 type futureSignRawTransactionWithKey chan *response
 
 func (f futureSignRawTransactionWithKey) Receive() (omnijson.SignRawTransactionWithKeyResult, error) {
@@ -109,3 +110,19 @@ func (f futureSignRawTransactionWithKey) Receive() (omnijson.SignRawTransactionW
 	err = json.Unmarshal(data, &result)
 	return result, err
 }
+
+
+type futureGetBlockCount chan *response
+
+func (f futureGetBlockCount) Receive() (omnijson.GetBlockCountResult, error) {
+	var result omnijson.GetBlockCountResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
+
