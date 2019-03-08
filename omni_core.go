@@ -144,3 +144,15 @@ func (f futureOmniFundedSend) Receive() (omnijson.OmniFundedSendResult, error) {
 	return result, err
 }
 
+type futureOmniListTransactions chan *response
+
+func (f futureOmniListTransactions) Receive() (omnijson.OmniListTransactionsResult, error) {
+	var result omnijson.OmniListTransactionsResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+	err = json.Unmarshal(data, &result)
+	return result, err
+}

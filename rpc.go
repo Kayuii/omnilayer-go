@@ -83,3 +83,7 @@ func (c *Client) OmniSend(cmd omnijson.OmniSendCommand) (omnijson.OmniSendResult
 func (c *Client) OmniFundedSend(cmd omnijson.OmniFundedSendCommand) (omnijson.OmniFundedSendResult, error) {
 	return futureOmniFundedSend(c.do(cmd)).Receive()
 }
+
+func (c *Client) OmniListTransactions(cmd omnijson.OmniListTransactionsCommand) (omnijson.OmniListTransactionsResult, error) {
+	return futureOmniListTransactions(c.do(cmd)).Receive()
+}
