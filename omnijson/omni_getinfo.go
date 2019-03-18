@@ -25,14 +25,14 @@ Result
 */
 
 type OmniGetInfoResult struct {
-	VersionInt         int32  `json:"omnicoreversion_int"`
+	VersionInt         int64  `json:"omnicoreversion_int"`
 	Version            string `json:"omnicoreversion"`
 	BitcoinCoreVersion string `json:"bitcoincoreversion"`
 	CommitInfo         string `json:"commitinfo"`
-	Block              int32  `json:"block"`
-	BlockTimestamp     int32  `json:"blocktime"`
-	BlockTransaction   int32  `json:"blocktransactions"`
-	TotalTransaction   int32  `json:"totaltransactions"`
+	Block              int64  `json:"block"`
+	BlockTimestamp     int64  `json:"blocktime"`
+	BlockTransaction   int64  `json:"blocktransactions"`
+	TotalTransaction   int64  `json:"totaltransactions"`
 }
 
 type OmniGetInfoCommand struct{}
