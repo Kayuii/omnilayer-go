@@ -20,7 +20,7 @@ func (OmniSendCommand) ID() string {
 }
 
 func (cmd OmniSendCommand) Params() []interface{} {
-	ret := []interface{}{cmd.FromAddress, cmd.ToAddress, cmd.PropertyId, cmd.Amount, cmd.RedeemAddress, cmd.ReferenceAmount}
+	ret := []interface{}{cmd.FromAddress, cmd.ToAddress, cmd.PropertyId, cmd.Amount}
 	if cmd.RedeemAddress != "" {
 		ret = append(ret, cmd.RedeemAddress)
 		if cmd.ReferenceAmount != "" {
