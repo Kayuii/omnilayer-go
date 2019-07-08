@@ -96,3 +96,17 @@ func (f futureSignRawTransactionWithKey) Receive() (omnijson.SignRawTransactionW
 	err = json.Unmarshal(data, &result)
 	return result, err
 }
+
+type futureGetNewAddress chan *response
+
+func (f futureGetNewAddress) Receive() (omnijson.GetNewAddressResult, error) {
+	var result omnijson.GetNewAddressResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}

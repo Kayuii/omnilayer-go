@@ -73,3 +73,11 @@ func (c *Client) OmniFundedSend(cmd omnijson.OmniFundedSendCommand) (omnijson.Om
 func (c *Client) OmniSend(cmd omnijson.OmniSendCommand) (omnijson.OmniSendResult, error) {
 	return futureOmniSend(c.do(cmd)).Receive()
 }
+
+func (c *Client) OmniListTransactions(cmd omnijson.OmniListTransactionsCommand) (omnijson.OmniListTransactionsResult, error) {
+	return futureOmniListTransactions(c.do(cmd)).Receive()
+}
+
+func (c *Client) GetNewAddress(cmd omnijson.GetNewAddressCommand) (omnijson.GetNewAddressResult, error) {
+	return futureGetNewAddress(c.do(cmd)).Receive()
+}
