@@ -33,7 +33,7 @@ type OmniListTransactionsResult = []struct {
 	Version          uint32  `json:"version"`
 	TypeInt          uint32  `json:"type_int"`
 	Type             string  `json:"type"`
-	PropertyId       int32   `json:"propertyid"`
+	PropertyId       uint32  `json:"propertyid"`
 	Divisible        bool    `json:"divisible"`
 	Amount           float64 `json:"amount"`
 	Valid            bool    `json:"valid"`
