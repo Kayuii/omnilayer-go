@@ -5,7 +5,7 @@ type OmniFundedSendResult string
 type OmniFundedSendCommand struct {
 	FromAddress string
 	ToAddress   string
-	PropertyId  uint
+	PropertyId  uint32
 	Amount      string
 	FeeAddress  string
 }
