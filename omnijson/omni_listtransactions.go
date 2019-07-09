@@ -30,10 +30,10 @@ type OmniListTransactionsResult = []struct {
 	SendingAddress   string  `json:"sendingaddress"`
 	ReferenceAddress string  `json:"referenceaddress"`
 	IsMine           bool    `json:"ismine"`
-	Version          int     `json:"version"`
-	TypeInt          int     `json:"type_int"`
+	Version          uint32  `json:"version"`
+	TypeInt          uint32  `json:"type_int"`
 	Type             string  `json:"type"`
-	PropertyId       int     `json:"propertyid"`
+	PropertyId       int32   `json:"propertyid"`
 	Divisible        bool    `json:"divisible"`
 	Amount           float64 `json:"amount"`
 	Valid            bool    `json:"valid"`
@@ -41,7 +41,7 @@ type OmniListTransactionsResult = []struct {
 	BlockTime        int64   `json:"blocktime"`
 	PositionInBlock  int     `json:"positioninblock"`
 	Block            int64   `json:"block"`
-	Confirmations    int     `json:"confirmations"`
+	Confirmations    uint32  `json:"confirmations"`
 }
 
 type OmniListTransactionsCommand struct {
