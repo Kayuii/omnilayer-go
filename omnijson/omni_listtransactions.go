@@ -40,7 +40,7 @@ type OmniListTransactionsResult = []struct {
 	BlockHash        string  `json:"blockhash"`
 	BlockTime        int64   `json:"blocktime"`
 	PositionInBlock  int     `json:"positioninblock"`
-	Block            int64   `json:"block"`
+	Block            int32   `json:"block"`
 	Confirmations    uint32  `json:"confirmations"`
 }
 
