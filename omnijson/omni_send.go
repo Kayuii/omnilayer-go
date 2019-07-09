@@ -5,7 +5,7 @@ type OmniSendResult string
 type OmniSendCommand struct {
 	FromAddress string
 	ToAddress   string
-	PropertyId  uint
+	PropertyId  uint32
 	Amount      string
 	//RedeemAddress         string
 	//ReferenceAmount       float64
