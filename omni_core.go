@@ -3,8 +3,22 @@ package omnilayer
 import (
 	"encoding/json"
 
-	"github.com/ibclabs/omnilayer-go/omnijson"
+	"github.com/xiaods/omnilayer-go/omnijson"
 )
+
+type futureOmniFoundedSend chan *response
+
+func (f futureOmniFoundedSend) Receive() (omnijson.OmniFoundedSendResult, error) {
+	var result omnijson.OmniFoundedSendResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
 
 type futureOmniCreatePayloadSimpleSend chan *response
 

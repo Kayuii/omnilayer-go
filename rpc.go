@@ -1,6 +1,28 @@
 package omnilayer
 
-import "github.com/ibclabs/omnilayer-go/omnijson"
+import "github.com/xiaods/omnilayer-go/omnijson"
+
+func (c *Client) OmniFoundedSend(from, to string, propertyid int64, amount, fee string) (omnijson.OmniFoundedSendResult, error) {
+	return futureOmniFoundedSend(c.do(omnijson.OmniFoundedSendCommand{
+		From:     from,
+		To:       to,
+		ProperID: propertyid,
+		Amount:   amount,
+		Fee:      fee,
+	})).Receive()
+}
+
+func (c *Client) GetAddressesByAccount(account string) (omnijson.GetAddressesByAccountResult, error) {
+	return futureGetAddressesByAccount(c.do(omnijson.GetAddressesByAccountCommand{
+		Account: account,
+	})).Receive()
+}
+
+func (c *Client) GetNewAddress(account string) (omnijson.GetNewAddressResult, error) {
+	return futureGetNewAddress(c.do(omnijson.GetNewAddressCommand{
+		Account: account,
+	})).Receive()
+}
 
 func (c *Client) GetBlockChainInfo() (omnijson.GetBlockChainInfoResult, error) {
 	return futureGetBlockChainInfo(c.do(omnijson.GetBlockChainInfoCommand{})).Receive()
