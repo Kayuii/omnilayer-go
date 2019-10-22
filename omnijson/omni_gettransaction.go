@@ -38,6 +38,12 @@ type OmniGettransactionResult struct {
 	BlockTimestamp  int32  `json:"blocktime"`
 	PositionInBlock int32  `json:"positioninblock"`
 	BlockHeight     int32  `json:"block"`
+	// Version         int64  `json:"version"`
+	// TypeInt         int64  `json:"type_int"`
+	// PropertyID      int64  `json:"propertyid"`
+	// BlockTimestamp  int64  `json:"blocktime"`
+	// PositionInBlock int64  `json:"positioninblock"`
+	// BlockHeight     int64  `json:"block"`
 	Confirmations   uint32 `json:"confirmations"`
 	Mine            bool   `json:"ismine"`
 	Divisible       bool   `json:"divisible"`

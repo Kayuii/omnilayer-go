@@ -1,9 +1,9 @@
 package omnijson
 
 type ImportAddressCommand struct {
-	Adress string
-	Tag    string
-	Rescan bool
+	Address  	string
+	Label    	string
+	Rescan 		bool
 }
 
 func (ImportAddressCommand) Method() string {
@@ -15,5 +15,5 @@ func (ImportAddressCommand) ID() string {
 }
 
 func (cmd ImportAddressCommand) Params() []interface{} {
-	return []interface{}{cmd.Adress, cmd.Tag, cmd.Rescan}
+	return []interface{}{cmd.Address, cmd.Label, cmd.Rescan}
 }

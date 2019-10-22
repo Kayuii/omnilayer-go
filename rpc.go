@@ -2,8 +2,8 @@ package omnilayer
 
 import "github.com/xiaods/omnilayer-go/omnijson"
 
-func (c *Client) OmniFoundedSend(from, to string, propertyid int64, amount, fee string) (omnijson.OmniFoundedSendResult, error) {
-	return futureOmniFoundedSend(c.do(omnijson.OmniFoundedSendCommand{
+func (c *Client) OmniFundedSend(from, to string, propertyid int64, amount, fee string) (omnijson.OmniFundedSendResult, error) {
+	return futureOmniFundedSend(c.do(omnijson.OmniFundedSendCommand{
 		From:     from,
 		To:       to,
 		ProperID: propertyid,
@@ -38,6 +38,10 @@ func (c *Client) GetInfo() (omnijson.OmniGetInfoResult, error) {
 	return futureGetInfo(c.do(omnijson.OmniGetInfoCommand{})).Receive()
 }
 
+func (c *Client) GetBlockCount()(omnijson.GetBlockCountResult, error)  {
+	return futureGetBlockCount(c.do(omnijson.GetBlockCountCmd{})).Receive()
+}
+
 func (c *Client) OmniGetTransaction(hash string) (omnijson.OmniGettransactionResult, error) {
 	return futureOmniGetTransaction(c.do(omnijson.OmniGetTransactionCommand{
 		Hash: hash,
@@ -46,6 +50,10 @@ func (c *Client) OmniGetTransaction(hash string) (omnijson.OmniGettransactionRes
 
 func (c *Client) ListUnspent(cmd omnijson.ListUnspentCommand) (omnijson.ListUnspentResult, error) {
 	return futureListUnspent(c.do(cmd)).Receive()
+}
+
+func (c *Client) GetNewAddress(cmd omnijson.GetNewAddressCommand) (omnijson.GetNewAddressResult, error) {
+	return futureGetNewAddress(c.do(cmd)).Receive()
 }
 
 func (c *Client) OmniCreatePayloadSimpleSend(cmd omnijson.OmniCreatePayloadSimpleSendCommand) (omnijson.OmniCreatePayloadSimpleSendResult, error) {
@@ -86,4 +94,16 @@ func (c *Client) SignRawTransactionWithKey(cmd omnijson.SignRawTransactionWithKe
 
 func (c *Client) OmniGetBalance(cmd omnijson.OmniGetBalanceCommand) (omnijson.OmniGetBalanceResult, error) {
 	return futureOmniGetBalance(c.do(cmd)).Receive()
+}
+
+func (c *Client) OmniSend(cmd omnijson.OmniSendCommand) (omnijson.OmniSendResult, error) {
+	return futureOmniSend(c.do(cmd)).Receive()
+}
+
+func (c *Client) OmniFundedSend(cmd omnijson.OmniFundedSendCommand) (omnijson.OmniFundedSendResult, error) {
+	return futureOmniFundedSend(c.do(cmd)).Receive()
+}
+
+func (c *Client) OmniListTransactions(cmd omnijson.OmniListTransactionsCommand) (omnijson.OmniListTransactionsResult, error) {
+	return futureOmniListTransactions(c.do(cmd)).Receive()
 }

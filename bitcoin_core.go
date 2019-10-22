@@ -6,7 +6,6 @@ import (
 	"github.com/xiaods/omnilayer-go/omnijson"
 )
 
-// =========GetAccountAddress==================
 type futureGetAccountAddress chan *response
 
 func (f futureGetAccountAddress) Receive() (omnijson.GetAccountAddressResult, error) {
@@ -91,6 +90,19 @@ func (f futureListUnspent) Receive() (omnijson.ListUnspentResult, error) {
 	return result, err
 }
 
+type futureGetNewAddress chan *response
+
+func (f futureGetNewAddress) Receive() (omnijson.GetNewAddressResult, error) {
+	var result omnijson.GetNewAddressResult
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
+
 type futureImportAddress chan *response
 
 func (f futureImportAddress) Receive() error {
@@ -126,6 +138,7 @@ func (f futureSignRawTransaction) Receive() (omnijson.SignRawTransactionResult, 
 	return result, err
 }
 
+
 type futureSignRawTransactionWithKey chan *response
 
 func (f futureSignRawTransactionWithKey) Receive() (omnijson.SignRawTransactionWithKeyResult, error) {
@@ -139,3 +152,19 @@ func (f futureSignRawTransactionWithKey) Receive() (omnijson.SignRawTransactionW
 	err = json.Unmarshal(data, &result)
 	return result, err
 }
+
+
+type futureGetBlockCount chan *response
+
+func (f futureGetBlockCount) Receive() (omnijson.GetBlockCountResult, error) {
+	var result omnijson.GetBlockCountResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
+

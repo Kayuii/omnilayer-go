@@ -144,8 +144,8 @@ func (c *Client) handleSendPostMessage(details *sendPostDetails) {
 func newHTTPClient() *http.Client {
 	return &http.Client{
 		Transport: &http.Transport{
-			ResponseHeaderTimeout: 5 * time.Second,
-			ExpectContinueTimeout: 4 * time.Second,
+			ResponseHeaderTimeout: 30 * time.Second,
+			ExpectContinueTimeout: 30 * time.Second,
 			IdleConnTimeout:       5 * 60 * time.Second,
 		},
 	}

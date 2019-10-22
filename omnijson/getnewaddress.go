@@ -17,17 +17,14 @@ type GetNewAddressCommand struct {
 	Account string
 }
 
-//Method ...
 func (GetNewAddressCommand) Method() string {
 	return "getnewaddress"
 }
 
-//ID ...
 func (GetNewAddressCommand) ID() string {
 	return "1"
 }
 
-//Params ...
 func (cmd GetNewAddressCommand) Params() []interface{} {
 	return []interface{}{cmd.Account}
 }
