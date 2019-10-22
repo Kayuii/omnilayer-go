@@ -24,24 +24,24 @@ Result
   },
 ]
 */
-type OmniListTransactionsResult = []struct {
+type OmniListTransactionsResult = [] struct {
 	Txid             string  `json:"txid"`
-	Fee              float64 `json:"fee"`
 	SendingAddress   string  `json:"sendingaddress"`
 	ReferenceAddress string  `json:"referenceaddress"`
-	IsMine           bool    `json:"ismine"`
+	BlockHash        string  `json:"blockhash"`
+	Type             string  `json:"type"`
+	Fee              float64 `json:"fee"`
+	Amount           float64 `json:"amount"`
+	BlockTime        int64   `json:"blocktime"`
 	Version          uint32  `json:"version"`
 	TypeInt          uint32  `json:"type_int"`
-	Type             string  `json:"type"`
-	PropertyId       uint32  `json:"propertyid"`
-	Divisible        bool    `json:"divisible"`
-	Amount           float64 `json:"amount"`
-	Valid            bool    `json:"valid"`
-	BlockHash        string  `json:"blockhash"`
-	BlockTime        int64   `json:"blocktime"`
-	PositionInBlock  int     `json:"positioninblock"`
-	Block            int32   `json:"block"`
+	PropertyID       uint32  `json:"propertyid"`
 	Confirmations    uint32  `json:"confirmations"`
+	Block            int32   `json:"block"`
+	PositionInBlock  int     `json:"positioninblock"`
+	IsMine           bool    `json:"ismine"`
+	Divisible        bool    `json:"divisible"`
+	Valid            bool    `json:"valid"`
 }
 
 type OmniListTransactionsCommand struct {

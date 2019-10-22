@@ -43,6 +43,11 @@ linters-settings:
     simple: true
     range-loops: true
     for-loops: true
+  gofmt:
+    # simplify code: gofmt with `-s` option, true by default
+    simplify: false
+  goimports:
+    local-prefixes: github.com/golangci/golangci-lint
 
 linters:
   enable-all: true

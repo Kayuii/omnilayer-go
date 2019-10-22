@@ -1,7 +1,7 @@
 package omnijson
 
 //OmniFundedSendResult ...
-type OmniFundedSendResult = string
+type OmniFundedSendResult string
 
 //OmniFoundedSendCommand ...
 type OmniFundedSendCommand struct {
