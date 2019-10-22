@@ -1,3 +1,1 @@
-module github.com/gsjohn/omnilayer-go
-
-go 1.13
+module github.com/kayuii/omnilayer-go
