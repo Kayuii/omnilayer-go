@@ -14,7 +14,7 @@ type GetNewAddressResult = string
 
 //GetNewAddressCommand ...
 type GetNewAddressCommand struct {
-	Account string
+	// Account string
 }
 
 func (GetNewAddressCommand) Method() string {
@@ -26,5 +26,6 @@ func (GetNewAddressCommand) ID() string {
 }
 
 func (cmd GetNewAddressCommand) Params() []interface{} {
-	return []interface{}{cmd.Account}
+	// return []interface{}{cmd.Account}
+	return nil
 }
