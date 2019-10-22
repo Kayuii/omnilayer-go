@@ -1,5 +1,3 @@
-module github.com/ibclabs/omnilayer-go
+module github.com/gsjohn/omnilayer-go
 
-go 1.12
-
-require github.com/kayuii/omnilayer-go v0.0.1
+go 1.13

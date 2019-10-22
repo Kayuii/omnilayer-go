@@ -1,37 +1,11 @@
 package omnilayer
 
+
 import "github.com/kayuii/omnilayer-go/omnijson"
 
-func (c *Client) OmniFundedSend(from, to string, propertyid int64, amount, fee string) (omnijson.OmniFundedSendResult, error) {
-	return futureOmniFundedSend(c.do(omnijson.OmniFundedSendCommand{
-		From:     from,
-		To:       to,
-		ProperID: propertyid,
-		Amount:   amount,
-		Fee:      fee,
-	})).Receive()
-}
-
-func (c *Client) GetAddressesByAccount(account string) (omnijson.GetAddressesByAccountResult, error) {
-	return futureGetAddressesByAccount(c.do(omnijson.GetAddressesByAccountCommand{
-		Account: account,
-	})).Receive()
-}
-
-func (c *Client) GetNewAddress(account string) (omnijson.GetNewAddressResult, error) {
-	return futureGetNewAddress(c.do(omnijson.GetNewAddressCommand{
-		Account: account,
-	})).Receive()
-}
 
 func (c *Client) GetBlockChainInfo() (omnijson.GetBlockChainInfoResult, error) {
 	return futureGetBlockChainInfo(c.do(omnijson.GetBlockChainInfoCommand{})).Receive()
-}
-
-func (c *Client) OmniListBlockTransactions(block int64) (omnijson.OmniListBlockTransactionsResult, error) {
-	return futureOmniListBlockTransactions(c.do(omnijson.OmniListBlockTransactionsCommand{
-		Block: block,
-	})).Receive()
 }
 
 func (c *Client) GetInfo() (omnijson.OmniGetInfoResult, error) {
@@ -55,6 +29,19 @@ func (c *Client) ListUnspent(cmd omnijson.ListUnspentCommand) (omnijson.ListUnsp
 func (c *Client) GetNewAddress(cmd omnijson.GetNewAddressCommand) (omnijson.GetNewAddressResult, error) {
 	return futureGetNewAddress(c.do(cmd)).Receive()
 }
+
+func (c *Client) GetNewAddress(account string) (omnijson.GetNewAddressResult, error) {
+	return futureGetNewAddress(c.do(omnijson.GetNewAddressCommand{
+		Account: account,
+	})).Receive()
+}
+
+func (c *Client) GetAddressesByAccount(account string) (omnijson.GetAddressesByAccountResult, error) {
+	return futureGetAddressesByAccount(c.do(omnijson.GetAddressesByAccountCommand{
+		Account: account,
+	})).Receive()
+}
+
 
 func (c *Client) OmniCreatePayloadSimpleSend(cmd omnijson.OmniCreatePayloadSimpleSendCommand) (omnijson.OmniCreatePayloadSimpleSendResult, error) {
 	return futureOmniCreatePayloadSimpleSend(c.do(cmd)).Receive()
@@ -96,14 +83,33 @@ func (c *Client) OmniGetBalance(cmd omnijson.OmniGetBalanceCommand) (omnijson.Om
 	return futureOmniGetBalance(c.do(cmd)).Receive()
 }
 
-func (c *Client) OmniSend(cmd omnijson.OmniSendCommand) (omnijson.OmniSendResult, error) {
-	return futureOmniSend(c.do(cmd)).Receive()
-}
-
 func (c *Client) OmniFundedSend(cmd omnijson.OmniFundedSendCommand) (omnijson.OmniFundedSendResult, error) {
 	return futureOmniFundedSend(c.do(cmd)).Receive()
+}
+
+func (c *Client) OmniFundedSend(from, to string, propertyid int64, amount, fee string) (omnijson.OmniFundedSendResult, error) {
+	return futureOmniFundedSend(c.do(omnijson.OmniFundedSendCommand{
+		From:     from,
+		To:       to,
+		ProperID: propertyid,
+		Amount:   amount,
+		Fee:      fee,
+	})).Receive()
+}
+
+func (c *Client) OmniSend(cmd omnijson.OmniSendCommand) (omnijson.OmniSendResult, error) {
+	return futureOmniSend(c.do(cmd)).Receive()
 }
 
 func (c *Client) OmniListTransactions(cmd omnijson.OmniListTransactionsCommand) (omnijson.OmniListTransactionsResult, error) {
 	return futureOmniListTransactions(c.do(cmd)).Receive()
 }
+
+func (c *Client) OmniListBlockTransactions(block int64) (omnijson.OmniListBlockTransactionsResult, error) {
+	return futureOmniListBlockTransactions(c.do(omnijson.OmniListBlockTransactionsCommand{
+		Block: block,
+	})).Receive()
+}
+
+
+

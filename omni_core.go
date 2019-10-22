@@ -6,19 +6,6 @@ import (
 	"github.com/kayuii/omnilayer-go/omnijson"
 )
 
-type futureOmniFundedSend chan *response
-
-func (f futureOmniFundedSend) Receive() (omnijson.OmniFundedSendResult, error) {
-	var result omnijson.OmniFundedSendResult
-
-	data, err := receive(f)
-	if err != nil {
-		return result, err
-	}
-
-	err = json.Unmarshal(data, &result)
-	return result, err
-}
 
 type futureOmniCreatePayloadSimpleSend chan *response
 
@@ -132,10 +119,10 @@ func (f futureOmniGetBalance) Receive() (omnijson.OmniGetBalanceResult, error) {
 	return result, err
 }
 
-type futureOmniSend chan *response
+type futureOmniFundedSend chan *response
 
-func (f futureOmniSend) Receive() (omnijson.OmniSendResult, error) {
-	var result omnijson.OmniSendResult
+func (f futureOmniFundedSend) Receive() (omnijson.OmniFundedSendResult, error) {
+	var result omnijson.OmniFundedSendResult
 
 	data, err := receive(f)
 	if err != nil {
@@ -145,10 +132,10 @@ func (f futureOmniSend) Receive() (omnijson.OmniSendResult, error) {
 	return result, err
 }
 
-type futureOmniFundedSend chan *response
+type futureOmniSend chan *response
 
-func (f futureOmniFundedSend) Receive() (omnijson.OmniFundedSendResult, error) {
-	var result omnijson.OmniFundedSendResult
+func (f futureOmniSend) Receive() (omnijson.OmniSendResult, error) {
+	var result omnijson.OmniSendResult
 
 	data, err := receive(f)
 	if err != nil {

@@ -3,12 +3,20 @@ package omnijson
 type OmniSendResult string
 
 type OmniSendCommand struct {
+
 	FromAddress     string
 	ToAddress       string
 	PropertyID      int
 	Amount          string
 	RedeemAddress   string
 	ReferenceAmount string
+	// FromAddress string
+	// ToAddress   string
+	// PropertyId  uint32
+	// Amount      string
+	//RedeemAddress         string
+	//ReferenceAmount       float64
+
 }
 
 func (OmniSendCommand) Method() string {

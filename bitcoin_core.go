@@ -34,20 +34,6 @@ func (f futureGetAddressesByAccount) Receive() (omnijson.GetAddressesByAccountRe
 	return result, err
 }
 
-type futureGetNewAddress chan *response
-
-func (f futureGetNewAddress) Receive() (omnijson.GetNewAddressResult, error) {
-	var result omnijson.GetNewAddressResult
-
-	data, err := receive(f)
-	if err != nil {
-		return result, err
-	}
-
-	err = json.Unmarshal(data, &result)
-	return result, err
-}
-
 type futureCreateRawTransaction chan *response
 
 func (f futureCreateRawTransaction) Receive() (omnijson.CreateRawTransactionResult, error) {
@@ -85,19 +71,6 @@ func (f futureListUnspent) Receive() (omnijson.ListUnspentResult, error) {
 	}
 
 	result := make(omnijson.ListUnspentResult, 0)
-
-	err = json.Unmarshal(data, &result)
-	return result, err
-}
-
-type futureGetNewAddress chan *response
-
-func (f futureGetNewAddress) Receive() (omnijson.GetNewAddressResult, error) {
-	var result omnijson.GetNewAddressResult
-	data, err := receive(f)
-	if err != nil {
-		return result, err
-	}
 
 	err = json.Unmarshal(data, &result)
 	return result, err
@@ -153,7 +126,6 @@ func (f futureSignRawTransactionWithKey) Receive() (omnijson.SignRawTransactionW
 	return result, err
 }
 
-
 type futureGetBlockCount chan *response
 
 func (f futureGetBlockCount) Receive() (omnijson.GetBlockCountResult, error) {
@@ -168,3 +140,16 @@ func (f futureGetBlockCount) Receive() (omnijson.GetBlockCountResult, error) {
 	return result, err
 }
 
+type futureGetNewAddress chan *response
+
+func (f futureGetNewAddress) Receive() (omnijson.GetNewAddressResult, error) {
+	var result omnijson.GetNewAddressResult
+
+	data, err := receive(f)
+	if err != nil {
+		return result, err
+	}
+
+	err = json.Unmarshal(data, &result)
+	return result, err
+}
