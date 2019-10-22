@@ -1,6 +1,6 @@
 package omnilayer
 
-import "github.com/xiaods/omnilayer-go/omnijson"
+import "github.com/kayuii/omnilayer-go/omnijson"
 
 func (c *Client) OmniFundedSend(from, to string, propertyid int64, amount, fee string) (omnijson.OmniFundedSendResult, error) {
 	return futureOmniFundedSend(c.do(omnijson.OmniFundedSendCommand{

@@ -3,7 +3,7 @@ package omnilayer
 import (
 	"encoding/json"
 
-	"github.com/xiaods/omnilayer-go/omnijson"
+	"github.com/kayuii/omnilayer-go/omnijson"
 )
 
 type futureOmniFoundedSend chan *response
