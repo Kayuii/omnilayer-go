@@ -6,10 +6,10 @@ import (
 	"github.com/kayuii/omnilayer-go/omnijson"
 )
 
-type futureOmniFoundedSend chan *response
+type futureOmniFundedSend chan *response
 
-func (f futureOmniFoundedSend) Receive() (omnijson.OmniFoundedSendResult, error) {
-	var result omnijson.OmniFoundedSendResult
+func (f futureOmniFundedSend) Receive() (omnijson.OmniFundedSendResult, error) {
+	var result omnijson.OmniFundedSendResult
 
 	data, err := receive(f)
 	if err != nil {
