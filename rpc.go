@@ -1,6 +1,4 @@
 package omnilayer
-
-
 import "github.com/kayuii/omnilayer-go/omnijson"
 
 
