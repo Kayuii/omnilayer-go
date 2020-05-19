@@ -28,11 +28,11 @@ func (c *Client) GetNewAddress(cmd omnijson.GetNewAddressCommand) (omnijson.GetN
 	return futureGetNewAddress(c.do(cmd)).Receive()
 }
 
-func (c *Client) GetNewAddress(account string) (omnijson.GetNewAddressResult, error) {
-	return futureGetNewAddress(c.do(omnijson.GetNewAddressCommand{
-		Account: account,
-	})).Receive()
-}
+// func (c *Client) GetNewAddress(account string) (omnijson.GetNewAddressResult, error) {
+// 	return futureGetNewAddress(c.do(omnijson.GetNewAddressCommand{
+// 		Account: account,
+// 	})).Receive()
+// }
 
 func (c *Client) GetAddressesByAccount(account string) (omnijson.GetAddressesByAccountResult, error) {
 	return futureGetAddressesByAccount(c.do(omnijson.GetAddressesByAccountCommand{
@@ -61,8 +61,8 @@ func (c *Client) OmniCreateRawTxChange(cmd omnijson.OmniCreateRawTxChangeCommand
 	return futureOmniCreateRawTxChange(c.do(cmd)).Receive()
 }
 
-func (c *Client) ImportAddress(address string, rescan bool) error {
-	return futureImportAddress(c.do(omnijson.ImportAddressCommand{Adress: address, Rescan: rescan})).Receive()
+func (c *Client) ImportAddress(cmd omnijson.ImportAddressCommand) error {
+	return futureImportAddress(c.do(cmd)).Receive()
 }
 
 func (c *Client) SendRawTransaction(cmd omnijson.SendRawTransactionCommand) (omnijson.SendRawTransactionResult, error) {
@@ -85,15 +85,15 @@ func (c *Client) OmniFundedSend(cmd omnijson.OmniFundedSendCommand) (omnijson.Om
 	return futureOmniFundedSend(c.do(cmd)).Receive()
 }
 
-func (c *Client) OmniFundedSend(from, to string, propertyid int64, amount, fee string) (omnijson.OmniFundedSendResult, error) {
-	return futureOmniFundedSend(c.do(omnijson.OmniFundedSendCommand{
-		From:     from,
-		To:       to,
-		ProperID: propertyid,
-		Amount:   amount,
-		Fee:      fee,
-	})).Receive()
-}
+// func (c *Client) OmniFundedSend(from, to string, propertyid int64, amount, fee string) (omnijson.OmniFundedSendResult, error) {
+// 	return futureOmniFundedSend(c.do(omnijson.OmniFundedSendCommand{
+// 		From:     from,
+// 		To:       to,
+// 		ProperID: propertyid,
+// 		Amount:   amount,
+// 		Fee:      fee,
+// 	})).Receive()
+// }
 
 func (c *Client) OmniSend(cmd omnijson.OmniSendCommand) (omnijson.OmniSendResult, error) {
 	return futureOmniSend(c.do(cmd)).Receive()
