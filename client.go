@@ -3,8 +3,11 @@ package omnilayer
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
+	"strings"
 	"sync/atomic"
 	"time"
 )
@@ -67,6 +70,40 @@ func (c *Client) sendPost(jReq *jsonRequest) {
 
 func New(config *ConnConfig) *Client {
 	httpClient := newHTTPClient()
+
+	client := &Client{
+		config:       config,
+		httpClient:   httpClient,
+		sendPostChan: make(chan *sendPostDetails, sendPostBufferSize),
+
+		shutdown: make(chan struct{}, 1),
+		done:     make(chan struct{}, 1),
+	}
+
+	go client.sendPostHandler()
+
+	return client
+}
+
+func NewWithProxy(config *ConnConfig) *Client {
+	httpClient := newHTTPClient()
+
+	fmt.Printf(" => %d", strings.Compare(config.Proxy, ""))
+	if strings.Compare(config.Proxy, "") != 0 {
+		proxy := func(_ *http.Request) (*url.URL, error) {
+			return url.Parse(config.Proxy)
+			//根据定义Proxy func(*Request) (*url.URL, error)这里要返回url.URL
+		}
+
+		httpClient = &http.Client{
+			Transport: &http.Transport{
+				Proxy:                 proxy,
+				ResponseHeaderTimeout: 30 * time.Second,
+				ExpectContinueTimeout: 30 * time.Second,
+				IdleConnTimeout:       5 * 60 * time.Second,
+			},
+		}
+	}
 
 	client := &Client{
 		config:       config,
